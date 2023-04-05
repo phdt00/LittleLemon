@@ -8,6 +8,14 @@ from .serializer import BookingSerializer, MenuSerializer
 def index(request):
     return render(request, 'index.html', {})
 
+def about(request):
+    return render(request, 'about.html')
+
+def menu(request):
+    menu_data = Menu.objects.all()
+    main_data = {"menu": menu_data}
+    return render(request, 'menu.html', {"menu": main_data})
+
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
